@@ -3,7 +3,7 @@ import React from 'react';
 import Photo from './Photo';
 import Comments from './Comments';
 
-class Single extends React.Component {
+const Single = React.createClass({
   render() {
     const postId = this.props.params.postId;
     const index = this.props.posts.findIndex((post) => post.code === postId);
@@ -13,10 +13,10 @@ class Single extends React.Component {
     return (
       <div className="single-photo">
         <Photo index={index} post={post} {...this.props} />
-        <Comments postComments={postComments} />
+        <Comments postComments={postComments} {...this.props} />
       </div>
     );
-  }
-}
+  },
+});
 
 export default Single;
